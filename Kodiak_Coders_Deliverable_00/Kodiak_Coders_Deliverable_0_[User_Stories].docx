@@ -10,3 +10,4 @@
 10. As a logged in user, I want to be able to add/remove travel logs so its not cluttered.
 11. As an administrator, I want to be able to view user accounts to help with troubleshooting.
 12. As an administrator, I want to be able to edit locations so customers can have the most up to date information.
+13. As a guest user, I want to be able to view locations without an account so there isn't any commitment.
