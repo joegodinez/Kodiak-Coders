@@ -14,6 +14,7 @@ TravelGavel is a vacation planning app available on Android devices. TravelGavel
 - Store boarding passes, hotels details, etc. to make your get-away as hassle free as possible
 - Share travel logs with others
 - Create, view, and share packing lists for your location
+- Add Google account to automatically add bookings to your calendar
 
 ### Requirements:
 - Android device running Android 9.0 or greater
