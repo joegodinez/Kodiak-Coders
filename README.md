@@ -19,4 +19,7 @@ TravelGavel is a vacation planning app available on Android devices. TravelGavel
 ### Requirements:
 - Android device running Android 9.0 or greater
 
-
+### Current Status:
+- log in ui creates (working on connecting it to db)
+- restaurant feature started (working on connecting to google api)
+- classes associated with dcd started (working on making more / connecting with existing code)
