@@ -1,0 +1,9 @@
+<resources>
+    <string name="create_account_title">Create A New Account</string>
+    <string name="app_name">create_account_ui</string>
+    <string name="new_username">New Username</string>
+    <string name="new_password">New Password</string>
+    <string name="first_name">First Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_create">Create Account</string>
+</resources>
