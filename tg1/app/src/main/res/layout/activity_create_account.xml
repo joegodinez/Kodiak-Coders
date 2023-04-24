@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".create_account">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/action_create_account"
+            android:textSize="45dp"
+            android:textStyle="bold"
+            android:textColor="@color/tg_main"/>
+
+        <!-- FOR NAME ERROR MESSAGE -->
+
+        <TextView
+            android:id="@+id/new_name_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="@string/new_name_error_message"
+            android:textColor="@color/tg_main"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp">
+
+            <EditText
+                android:id="@+id/new_name_input_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:hint="@string/new_name"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- FOR NEW USERNAME ERROR MESSAGE -->
+
+        <TextView
+            android:id="@+id/new_username_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="@string/new_username_error_message"
+            android:textColor="@color/tg_main"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp">
+
+            <EditText
+                android:id="@+id/new_username_input_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:hint="@string/new_username"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- FOR NEW PASSWORD ERROR MESSAGE -->
+
+        <TextView
+            android:id="@+id/new_password_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="@string/new_password_error_message"
+            android:textColor="@color/tg_main"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/new_password_input_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:hint="@string/new_password"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- FOR PASSWORD VERIFICATION ERROR MESSAGE -->
+
+        <TextView
+            android:id="@+id/verify_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="@string/password_verification_error_message"
+            android:textColor="@color/tg_main"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/verify_input_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:hint="@string/verify_new_password"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/register_new_account_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="235dp"
+            android:text="@string/action_create_account"/>
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>
