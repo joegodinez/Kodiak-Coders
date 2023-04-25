@@ -23,24 +23,6 @@
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="30dp"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp">
-
-            <EditText
-                android:id="@+id/sign_in_username_field"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:hint="@string/prompt_username"/>
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-
         <!-- FOR USERNAME ERROR MESSAGE -->
 
         <TextView
@@ -57,16 +39,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp"
-            app:passwordToggleEnabled="true">
+            android:layout_marginBottom="40dp">
 
             <EditText
-                android:id="@+id/sign_in_password_field"
+                android:id="@+id/sign_in_username_field"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:hint="@string/prompt_password"
-                android:inputType="textPassword"/>
+                android:hint="@string/prompt_username"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -81,13 +61,45 @@
             android:text="@string/password_error_message"
             android:textColor="@color/tg_main"/>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/sign_in_password_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/not_found_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/not_found"
+            android:textColor="@color/tg_secondary"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
         <Button
             android:id="@+id/sign_in_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginLeft="290dp"
             android:text="@string/action_sign_in"/>
+
+
 
 
     </LinearLayout>
