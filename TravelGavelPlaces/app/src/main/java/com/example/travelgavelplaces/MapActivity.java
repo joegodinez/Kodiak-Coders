@@ -50,9 +50,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
 
+
+        /*TESTS WHETHER LOCATION PERMISSION HAS BEEN GRANTED
+        * IF IT HAS, DEVICE LOCATION IS GOTTEN AND LOCATION IS ACCESSED
+        * ELSE, NOTHING HAPPENS*/
+
         if (mLocationPermissionGranted) {
             getDeviceLocation();
-
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -140,6 +144,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         String searchString = mSearchText.getText().toString();
         Geocoder geocoder = new Geocoder(MapActivity.this);
         List<Address> list = new ArrayList<>();
+
+        /*TESTS IF THERE IS IOException
+        * IF SO SEND MESSAGE TO LOG*/
         try{
             list = geocoder.getFromLocationName(searchString, 1);
         }catch (IOException e){
@@ -166,6 +173,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                 Task location = mFusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
+
+                    /*TESTS IF CURRENT LOCATION IS FOUND
+                    * IF NOT, THROWS ERROR MESSAGE TO LOG
+                    * IF SO, THROWS SUCCESSFUL MESSAGE TO LOG AND MOVES CAMERA TO LATITUDE AND LONGITUDE
+                    * */
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()){
@@ -212,6 +224,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Log.d(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
+        /*TESTS FOR USER PERMISSIONS
+        * CHECKS IF EITHER COARSE OR FINE LOCATION IS GIVEN
+        * IF SO, INITIALIZES MAP
+        * ELSE, REQUESTS THE PERMISSIONS FROM THE USER*/
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
@@ -321,6 +337,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             });
         }
     };*/
+
+
+
+
+    /*-----------------------------------J-Unit Testing----------------------------------*/
+
 
 
 
