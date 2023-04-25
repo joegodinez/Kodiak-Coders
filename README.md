@@ -1,5 +1,8 @@
 # TravelGavel
 
+## Current Version:
+0.3.0
+
 ## Overview:
 TravelGavel is a vacation planning app available on Android devices. TravelGavel has everything you need to plan and enjoy your perfect trip. Book flights, hotels, and car rentals with ease. Use TravelGavel's packing list to make sure you don't forget anything at home. Research the best restaurants and attractions at your destination, while keeping track of your expenditures. Keep track of your plans with TravelGavels travel logs. Stay connected with others by sharing your trip with friends or planning a trip with a group. Store all your digital needs, from reservation and tickets at your fingertips to pictures and videos to commemorate your journey. Get your vacation in order with TravelGavel!
 
@@ -23,3 +26,4 @@ TravelGavel is a vacation planning app available on Android devices. TravelGavel
 - log in ui creates (working on connecting it to db)
 - restaurant feature started (working on connecting to google api)
 - classes associated with dcd started (working on making more / connecting with existing code)
+- search for locations (working on expanding implementation)
