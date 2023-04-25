@@ -3,10 +3,10 @@
     <item
         android:id="@+id/user_logs"
         android:title="@string/your_logs"
-        android:icon="@drawable/logo_cropped"/>
+        android:icon="@drawable/baseline_map_24"/>
 
     <item
         android:id="@+id/search"
         android:title="@string/search"
-        android:icon="@drawable/logo_cropped"/>
+        android:icon="@drawable/baseline_search_24"/>
 </menu>

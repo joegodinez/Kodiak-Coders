@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".user_home">
 
+    <TextView
+        android:id="@+id/welcome_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/current_user_home"
+        android:textColor="@color/tg_secondary"
+        android:textStyle="bold"
+        android:textSize="18dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/welcome_message"
+        android:layout_marginLeft="270dp"
+        android:src="@drawable/baseline_verified_user_24"/>
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

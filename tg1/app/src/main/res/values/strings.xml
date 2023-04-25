@@ -14,6 +14,7 @@
     <string name="action_sign_in">Sign In</string>
     <string name="username_error_message">Please enter your username.</string>
     <string name="password_error_message">Please enter your password.</string>
+    <string name="not_found">That doesn\'t match our records.</string>
 
     <!-- String related to creating a new account -->
     <string name="action_create_account">Create A New\nAccount</string>
@@ -27,6 +28,7 @@
     <string name="password_verification_error_message">Both passwords don\'t match</string>
 
     <!-- Strings related to home page -->
+    <string name="current_user_home">Hi user!</string>
     <string name="home_login_button">Login</string>
     <string name="home_create_account_button">Create Account</string>
     <string name="your_logs">Your Logs</string>
@@ -34,6 +36,8 @@
 
     <!-- String related to user travel logs page -->
     <string name="user_travel_logs">User\'s Travel\nLogs</string>
+    <string name="first_log_message">Make your first travel log!</string>
+    <string name="new_log">New Log</string>
 
     <!-- Stupid shit -->
     <string name="large_text">
