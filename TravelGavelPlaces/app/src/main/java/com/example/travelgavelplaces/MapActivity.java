@@ -1,5 +1,7 @@
 package com.example.travelgavelplaces;
 
+import static com.example.travelgavelplaces.BuildConfig.MAPS_API_KEY;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -22,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.travelgavelplaces.models.PlaceInfo;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,13 +35,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.net.PlacesClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
@@ -65,6 +70,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
+    private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
+
 
     //widgets
     private AutoCompleteTextView mSearchText;
@@ -75,6 +82,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private PlaceAutocompleteAdapterNew placeAutocompleteAdapterNew;
+    private PlaceInfo mPlace;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,13 +97,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void init(){
         Log.d(TAG, "init: initializing");
 
-        //https://www.youtube.com/watch?v=6Trdd9EnmqY&list=PLgCYzUzKIBE-vInwQhGSdnbyJ62nixHCt&index=8
-        // at 9:22
-        //places api changed lol
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), MAPS_API_KEY);
+        }
 
-        //mGoogleApiClient = new GoogleApiClient
+        PlacesClient placesClient = Places.createClient(this);
 
-        //placeAutocompleteAdapterNew = new PlaceAutocompleteAdapterNew( );
+        placeAutocompleteAdapterNew = new PlaceAutocompleteAdapterNew(this, placesClient, null);
+
+        mSearchText.setAdapter(placeAutocompleteAdapterNew);
 
         mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -248,5 +258,70 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void hideSoftKeyboard(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
+
+    /*
+    * -------------------------------------google places API autocomplete suggestions ---------------------------
+     */
+    //--------------------------------------
+    // ERRORS
+
+    /*
+    private AdapterView.OnItemClickListener mAutocompleteClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            hideSoftKeyboard();
+
+
+            final AutocompletePrediction item = PlaceAutocompleteAdapterNew.getItem(position);
+            final String placeId = item.getPlaceId();
+
+            List<Place.Field> placeFields = Arrays.asList(
+                    Place.Field.ID,
+                    Place.Field.NAME,
+                    Place.Field.ADDRESS,
+                    Place.Field.LAT_LNG,
+                    Place.Field.RATING,
+                    Place.Field.PHONE_NUMBER,
+                    Place.Field.WEBSITE_URI
+            );
+
+            FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeId, placeFields);
+            PlacesClient placesClient = Places.createClient(context);
+            placesClient.fetchPlace(request).addOnSuccessListener((response) -> {
+                Place place = response.getPlace();
+
+                try {
+                    mPlace = new PlaceInfo();
+                    mPlace.setName(place.getName());
+                    Log.d(TAG, "onItemClick: Name: " + place.getName());
+                    mPlace.setAddress(place.getAddress());
+                    Log.d(TAG, "onItemClick: Address: " + place.getAddress());
+                    mPlace.setId(place.getId());
+                    Log.d(TAG, "onItemClick: Id: " + place.getId());
+                    mPlace.setLatlng(place.getLatLng());
+                    Log.d(TAG, "onItemClick: Latlng: " + place.getLatLng());
+                    mPlace.setRating(place.getRating());
+                    Log.d(TAG, "onItemClick: Rating: " + place.getRating());
+                    mPlace.setPhoneNumber(place.getPhoneNumber());
+                    Log.d(TAG, "onItemClick: Phone number: " + place.getPhoneNumber());
+                    mPlace.setWebsiteUri(place.getWebsiteUri());
+                    Log.d(TAG, "onItemClick: Website uri: " + place.getWebsiteUri());
+                } catch (NullPointerException e) {
+                    Log.e(TAG, "onItemClick: NullPointerException: " + e.getMessage());
+                }
+                moveCamera(new LatLng(place.getViewport().getCenter().latitude,
+                        place.getViewport().getCenter().longitude), DEFAULT_ZOOM, mPlace.getName());
+            }).addOnFailureListener((exception) -> {
+                if (exception instanceof ApiException) {
+                    ApiException apiException = (ApiException) exception;
+                    int statusCode = apiException.getStatusCode();
+                    Log.e(TAG, "onItemClick: Place not found: " + exception.getMessage());
+                    Log.e(TAG, "onItemClick: Status code: " + statusCode);
+                }
+            });
+        }
+    };*/
+
+
 
 }

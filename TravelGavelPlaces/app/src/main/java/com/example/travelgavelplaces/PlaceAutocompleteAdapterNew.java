@@ -119,6 +119,8 @@ public class PlaceAutocompleteAdapterNew extends ArrayAdapter<AutocompletePredic
 
         // Use the builder to create a FindAutocompletePredictionsRequest.
         FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
+                //.setLocationBias(bounds)
+               // .setTypesFilter(Arrays.asList(TypeFilter.ADDRESS.toString()))
                 .setTypeFilter(TypeFilter.ADDRESS)
                 .setSessionToken(token)
                 .setQuery(constraint.toString())
@@ -128,8 +130,10 @@ public class PlaceAutocompleteAdapterNew extends ArrayAdapter<AutocompletePredic
             @Override
             public void onSuccess(FindAutocompletePredictionsResponse response) {
                 for (AutocompletePrediction prediction : response.getAutocompletePredictions()) {
-                    Log.i(TAG, prediction.getPrimaryText(null).toString());
-                }
+                    //Log.i(TAG, prediction.getPlaceId());
+                    //Log.i(TAG, prediction.getPrimaryText(null).toString());
+                    Log.i(TAG, prediction.getFullText(null).toString());
+                    }
                 tempResult=response.getAutocompletePredictions();
             }
         }).addOnFailureListener(new OnFailureListener() {
